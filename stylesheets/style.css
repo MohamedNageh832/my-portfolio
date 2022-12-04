@@ -134,6 +134,15 @@ textarea {
   padding-left: 80px;
 }
 
+.sidebar-toggler {
+  display: none;
+  width: 50px;
+  height: 50px;
+  padding: 12px;
+  background-color: #434343;
+  border-radius: 50%;
+}
+
 .sidebar__link {
   color: var(--text-one);
   font-size: var(--fs4);
@@ -397,7 +406,7 @@ textarea {
 /* Footer */
 .footer {
   padding: var(--s3);
-  background-color: #4a4a4a;
+  background-color: #434343;
   font-size: var(--fs2);
   text-align: center;
   scroll-snap-align: start;
@@ -444,4 +453,133 @@ textarea {
 
 .fs-6 {
   font-size: var(--fs6);
+}
+
+/* Media queries */
+
+@media (max-width: 768px) {
+  :root {
+    --fs2: 12px;
+    --fs3: 14px;
+    --fs4: 16px;
+    --fs5: 20px;
+    --fs6: 24px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+
+  /* Wrapper */
+  .wrapper {
+    scroll-snap-type: none;
+  }
+
+  .main-content {
+    padding-top: 64px;
+    padding-right: 0;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 85%;
+    z-index: 2;
+    transform: translateX(-100%);
+    background-color: #313131;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggler {
+    position: fixed;
+    top: var(--s3);
+    left: var(--s3);
+    display: block;
+    z-index: 3;
+  }
+
+  /* sections */
+  .section {
+    width: 80%;
+    margin: auto;
+  }
+
+  .intro {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  .intro__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .intro__img {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* About section */
+
+  .about__text {
+    width: auto;
+  }
+
+  .about__stats {
+    justify-content: center;
+  }
+
+  .stats__item {
+    flex: 1;
+  }
+
+  .projects {
+    justify-content: center;
+    padding-bottom: 64px;
+  }
+
+  .card__placeholder {
+    height: auto;
+  }
+
+  .skills {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s3);
+  }
+
+  .skills::before {
+    content: "My skills";
+    width: 100%;
+    margin-bottom: var(--s3);
+    text-align: center;
+    font-size: var(--fs4);
+  }
+
+  .skill {
+    position: static;
+    width: 100%;
+    border-radius: var(--bRadius1);
+    background-color: #434343;
+    font-weight: 400;
+    font-size: var(--fs3);
+  }
+
+  .skill__img {
+    height: 50px;
+  }
+
+  .skill__text {
+    width: 80%;
+  }
 }

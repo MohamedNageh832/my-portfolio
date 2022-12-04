@@ -1,14 +1,36 @@
+const sidebar = document.querySelector(".sidebar");
+const sidebarToggler = document.querySelector(".sidebar-toggler");
+
+sidebarToggler.addEventListener("click", () => {
+  sidebar.classList.toggle("active");
+
+  const overlay = document.querySelector(".overlay");
+
+  if (overlay !== null) {
+    overlay.remove();
+  } else {
+    const overlay = document.createElement("div");
+    overlay.className = "overlay";
+
+    overlay.addEventListener("click", () => {
+      overlay.remove();
+      sidebar.classList.remove("active");
+    });
+
+    document.body.appendChild(overlay);
+  }
+});
+
 const sidebarLinks = document.querySelectorAll(".sidebar__link");
 const wrapper = document.querySelector(".wrapper");
 
 wrapper.addEventListener("scroll", handleScroll);
 
-const SCROLL_CORRECTION = 100;
-
 function handleScroll() {
-  const activeLink = Math.floor(
-    (wrapper.scrollTop + SCROLL_CORRECTION) / window.innerHeight
-  );
+  let activeLink = Math.floor(wrapper.scrollTop / window.innerHeight);
+  const linksCount = sidebarLinks.length - 1;
+
+  if (activeLink > linksCount) activeLink = linksCount;
 
   sidebarLinks.forEach((el) => el.classList.remove("active"));
   sidebarLinks[activeLink].classList.add("active");
