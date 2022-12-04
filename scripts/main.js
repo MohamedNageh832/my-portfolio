@@ -1,13 +1,13 @@
 const sidebarLinks = document.querySelectorAll(".sidebar__link");
-const mainContent = document.querySelector(".main-content");
+const wrapper = document.querySelector(".wrapper");
 
-mainContent.addEventListener("scroll", handleScroll);
+wrapper.addEventListener("scroll", handleScroll);
 
 const SCROLL_CORRECTION = 100;
 
 function handleScroll() {
   const activeLink = Math.floor(
-    (mainContent.scrollTop + SCROLL_CORRECTION) / window.innerHeight
+    (wrapper.scrollTop + SCROLL_CORRECTION) / window.innerHeight
   );
 
   sidebarLinks.forEach((el) => el.classList.remove("active"));
