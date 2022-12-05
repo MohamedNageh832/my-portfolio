@@ -535,6 +535,8 @@ textarea {
   .intro {
     flex-direction: column-reverse;
     justify-content: center;
+    align-items: center;
+    min-height: 100vh;
   }
 
   .intro__info {
