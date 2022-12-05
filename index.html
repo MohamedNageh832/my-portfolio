@@ -30,11 +30,7 @@
                 Hi, I’m Mohamed nageh a Front-end developer and web designer
               </h1>
               <div class="intro__cta">
-                <a
-                  class="btn btn--lg btn--neon"
-                  href="mailto:mohammednageh832@gmail.com"
-                  >Contact me</a
-                >
+                <a class="btn btn--lg btn--neon" href="#contact">Contact me</a>
                 <a
                   class="link link--secondary"
                   href="https://github.com/MohamedNageh832/"
@@ -223,15 +219,19 @@
           </section>
           <section id="contact" class="section contact">
             <h3>Get in touch.</h3>
-            <form
-              class="form"
-              action="mailto:mohammednageh832@gmail.com"
-              method="post"
-              enctype="text/plain"
-            >
-              <input class="input" placeholder="Name" type="text" />
-              <input class="input" placeholder="Email" type="email" />
-              <textarea class="textarea" placeholder="Message"></textarea>
+            <form class="form" name="contact" method="post" data-netlify="true">
+              <input class="input" name="name" placeholder="Name" type="text" />
+              <input
+                class="input"
+                name="email"
+                placeholder="Email"
+                type="email"
+              />
+              <textarea
+                class="textarea"
+                name="message"
+                placeholder="Message"
+              ></textarea>
               <button class="btn btn--neon" type="submit">Send message</button>
             </form>
           </section>
