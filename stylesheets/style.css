@@ -271,6 +271,7 @@ textarea {
     transform: translate3d(0, 4px, 0);
   }
 }
+
 .card__body {
   padding: var(--s2);
   font-size: var(--fs2);
@@ -446,20 +447,26 @@ textarea {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
   width: 100%;
   height: 100%;
   background-color: rgba(12, 12, 12, 0.7);
+  transition: all 0.5s ease-in-out;
 }
 
 .fs-6 {
   font-size: var(--fs6);
 }
 
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
 /* Media queries */
 
 @media (max-width: 768px) {
   :root {
-    --fs2: 12px;
     --fs3: 14px;
     --fs4: 16px;
     --fs5: 20px;
@@ -477,7 +484,6 @@ textarea {
   }
 
   .main-content {
-    padding-top: 64px;
     padding-right: 0;
   }
 
@@ -486,8 +492,9 @@ textarea {
     position: absolute;
     top: 0;
     left: 0;
-    width: 85%;
-    z-index: 2;
+    width: 75%;
+    max-width: 300px;
+    z-index: 4;
     transform: translateX(-100%);
     background-color: #313131;
     transition: all 0.5s ease-in-out;
@@ -502,13 +509,27 @@ textarea {
     top: var(--s3);
     left: var(--s3);
     display: block;
+    z-index: 5;
+  }
+
+  .sidebar-overlay {
     z-index: 3;
   }
 
   /* sections */
   .section {
     width: 80%;
+    min-height: 0;
+    padding-top: 48px;
+    padding-bottom: 48px;
     margin: auto;
+  }
+
+  .section::before {
+    width: 100%;
+    color: var(--text-one);
+    font-size: 2rem;
+    font-weight: 700;
   }
 
   .intro {
@@ -529,6 +550,9 @@ textarea {
   }
 
   /* About section */
+  .about::before {
+    content: "About me";
+  }
 
   .about__text {
     width: auto;
@@ -542,14 +566,34 @@ textarea {
     flex: 1;
   }
 
+  /* Projects section */
+
   .projects {
     justify-content: center;
-    padding-bottom: 64px;
+  }
+
+  .projects::before {
+    content: "My projects";
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card__img {
+    height: 200px;
   }
 
   .card__placeholder {
     height: auto;
   }
+
+  .preview {
+    left: 10%;
+    width: 80%;
+  }
+
+  /* Skills section */
 
   .skills {
     display: flex;
@@ -560,10 +604,7 @@ textarea {
 
   .skills::before {
     content: "My skills";
-    width: 100%;
-    margin-bottom: var(--s3);
-    text-align: center;
-    font-size: var(--fs4);
+    margin-bottom: var(--s4);
   }
 
   .skill {
@@ -581,5 +622,13 @@ textarea {
 
   .skill__text {
     width: 80%;
+  }
+
+  /* Contact section */
+
+  .input,
+  .textarea,
+  .form {
+    width: 100%;
   }
 }

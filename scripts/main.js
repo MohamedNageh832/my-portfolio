@@ -1,24 +1,15 @@
 const sidebar = document.querySelector(".sidebar");
+const sidebarOverlay = document.querySelector(".sidebar-overlay");
 const sidebarToggler = document.querySelector(".sidebar-toggler");
 
 sidebarToggler.addEventListener("click", () => {
   sidebar.classList.toggle("active");
+  sidebarOverlay.classList.toggle("hidden");
+});
 
-  const overlay = document.querySelector(".overlay");
-
-  if (overlay !== null) {
-    overlay.remove();
-  } else {
-    const overlay = document.createElement("div");
-    overlay.className = "overlay";
-
-    overlay.addEventListener("click", () => {
-      overlay.remove();
-      sidebar.classList.remove("active");
-    });
-
-    document.body.appendChild(overlay);
-  }
+sidebarOverlay.addEventListener("click", () => {
+  sidebar.classList.remove("active");
+  sidebarOverlay.classList.add("hidden");
 });
 
 const sidebarLinks = document.querySelectorAll(".sidebar__link");
@@ -74,13 +65,13 @@ function previewImg(src) {
   overlay.classList = "overlay";
 
   overlay.addEventListener("click", () => {
-    window.removeEventListener("mousemove", handleDragImg);
-    window.removeEventListener("mousedown", handlePreviewMouseUp);
     div.remove();
     overlay.remove();
+    window.removeEventListener("mousemove", handleDragImg);
+    window.removeEventListener("mousedown", handlePreviewMouseUp);
   });
 
-  document.body.append(div, overlay);
+  document.body.append(overlay, div);
 }
 
 let isDragging = false;
